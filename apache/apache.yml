@@ -1,16 +1,12 @@
 ---
 - hosts: awsserver
+  sudo: yes
   vars:
     http_port: 80
     domain: example.com
-
   tasks:
-
-    - name: install packages
-      apt: name={{ item }} update_cache=yes state=latest
-      with_items:
-        - apache2
-        - git
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest
 
     - name: enabled mod_rewrite
       apache2_module: name=rewrite state=present
@@ -36,9 +32,17 @@
         creates: /etc/apache2/sites-enabled/{{ domain }}.conf
       notify:
         - restart apache2
+    
+    - name: Create DocumentRoot directory
+      file:
+        path: /var/www/example.com
+        state: directory
+        mode: '0755'
 
-    - name: clone basic html template
-      git: repo=https://github.com/rajakumarguptatechie/ansible.git dest=/var/www/example.com update=no
+    - name: copy basic html file
+      copy:
+        src: ../index.html
+        dest: /var/www/example.com/index.html
 
   handlers:
     - name: restart apache2
