@@ -1,0 +1,45 @@
+## Ansible Doc commands
+   Ansible doc help:                               # ansible-doc --help
+   Ansible module info:                            # ansible-doc <module-name> (show ditailed info)
+   Ansible module snippet:                         # ansible-doc -s <module-name> (show snippet only)
+   Ansible plugin info:                            # ansible-doc -t <plugin-type> -s <plugin-name>
+   Eg:                                             # ansible-doc -t connection -s ssh
+
+## Ansible Ad hoc commands
+# Basic Ansible Commands   
+    Verify connectivity of host:                   # ansible <group> -m -ping
+    Rebooting host systems:                        # ansible <group> -a “/sbin/reboot”
+    List disk:                                     # ansible all -m shell -a 'fdisk -l' -u ansible --become -K
+    Creating a new user:                           # ansible <group> -m user -a “name=ansible password=<encrypted password>”
+    User Deletion:                                 # ansible <group> -m user -a “name=ansible state=absent”
+    Permissions changing:                          # ansible <group> -m file -a “dest=/home/ansible/file1.txt mode=777”
+    Verify package installation with update:       # ansible <group> -m yum -a “name=httpd state=latest”
+    Verify package installation without an update: # ansible <group> -m yum -a “name= httpd state=present”
+    Verify package version:                        # ansible <group> -m yum -a “name= httpd-1.8 state=present”
+    Verify package installation:                   # ansible <group> -m yum -a “name= httpd state=absent”
+    Display host information (all facts):          # ansible <group> -m setup | less
+    Filter specific host information (some facts): # ansible all -m setup -a "filter=ansible_distribution*"
+	                                               # ansible all -m setup -a "filter=ansible_enp0s3.ipv4.address"
+# Intermediate Ansible Commands
+    File transfer to more than one server:         # ansible all -m copy -a “src = /etc/yum.conf dest = /tmp/yum.conf”
+    Rebooting more than one group servers:         # ansible all -a “/sbin/reboot” -f 12
+    Help option on the available roles:            # ansible-galaxy -h
+    Set a timeout in ansible:                      # ansible all -a “/usr/bin/scrptat” -B 2600 -P 0
+    Generate only ansible fact for one host:       # ansible <host> -m setup -a ‘filter=ansible_eth*’
+    Verify package installation  with update:      # ansible <group> -m yum -a “name=httpd state=latest”
+    Dry run of playbook:			               # ansible-playbook -C sampleplaybook.yml -i ansible_hosts
+    Playbook syntax check:                         # ansible-playbook --syntax-check sampleplaybook.yml -i ansible_hosts
+    Synopsis to Run ansible playbook:              # ansible-playbook [options] playbook.yml [playbook2 …]
+    List all tasks from a playbook:                # ansible-playbook --list-tasks playbook01.yml
+    List all tags from a playbook:                 # ansible-playbook --list-tags playbook01.yml
+    List all hosts applicable for a playbook:      # ansible-playbook --list-hosts playbook01.yml
+    Run playbook from a specific task:             # ansible-playbook playbook01.yml --start-at-task="Print several lines of text"
+    Run playbook only for associated task's tags:  # ansible-playbook playbook01.yml --tags=user_creation
+    Skip a associated task from play:              # ansible-playbook playbook01.yml --skip-tags=user_creation
+    Synopsis to run ansible pull:                  # ansible-pull -U <repository> [options] [<playbook.yml>]
+
+# Advance Ansible Commands:
+    Provides information about Ansible:            # ansible-galaxy info
+    Displays a list of installed roles:            # ansible-galaxy list 
+    Install a role from ansible-galaxy:            # ansible-galaxy install <name of role>.
+    Removes an installed role:                     # ansible-galaxy remove <role>   	
