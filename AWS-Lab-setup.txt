@@ -1,0 +1,18 @@
+AWS signup: https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=tier%2312monthsfree&awsf.Free%20Tier%20Categories=*all
+AWS Console login: https://console.aws.amazon.com
+AWS Free tier: https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=tier%2312monthsfree&awsf.Free%20Tier%20Categories=*all
+
+
+Steps to set up lab on AWS:
+1. Sign up for free account
+2. Login to AWS console
+3. Launch an instance
+4. Download the key-pair
+5. Convert the key-pair in .ppk format using Puttygen [puttygen=>load(browse computer location where key was downloaded in step-4)=>save-private-key]
+6. Launch putty to access VM remotely
+a. Pass public IP of AWS instance in session
+b. Use .ppk key which you got in step-5 (putty=>connection=>ssh=>auth=>browse=>locate the .ppk key)
+
+
+
+
