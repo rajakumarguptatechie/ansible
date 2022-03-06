@@ -1,0 +1,22 @@
+---
+- name: "Install Apache Web Server"
+  user: ec2-user
+  become: yes
+  connection: local
+  hosts: localhost
+  tasks:  
+    - name: Install Apache
+      yum:
+        name: httpd 
+        state: present
+        update_cache: yes
+      tags:
+        - install_apache
+
+    - name: Restart Apache
+      service:
+        name:  httpd
+        state: restarted
+      tags:
+        - restart_apache
+
