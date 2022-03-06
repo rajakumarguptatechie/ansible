@@ -1,21 +1,21 @@
 ## Example Ansible Playbook to Setup LAMP stack
 
-Linux Apache Mysql/MariaDB PHP is shortly called as LAMP stack and it powers most of the internet websites including Facebook.
+#Linux Apache Mysql/MariaDB PHP is shortly called as LAMP stack and it powers most of the internet websites including Facebook.
 
-So let us look at a Sample Ansible Playbook to install LAMP stack with necessary packages and tools.
+#So let us look at a Sample Ansible Playbook to install LAMP stack with necessary packages and tools.
 
-So what are going to do in this playbook
+#So what are going to do in this playbook
 
-    Connect to Remote host and execute the following tasks
-        Install all necessary packages like Apache(httpd), mariadb, php
-        Installing a firewall and enabling HTTP services
-        Start the Apache HTTPD web server.
-        Start the MariaDB server
-        Download a Sample PHP page from remote URL
-        Access the website we have built by accessng the URL
+#    Connect to Remote host and execute the following tasks
+#        Install all necessary packages like Apache(httpd), mariadb, php
+#        Installing a firewall and enabling HTTP services
+#        Start the Apache HTTPD web server.
+#        Start the MariaDB server
+#        Download a Sample PHP page from remote URL
+#        Access the website we have built by accessng the URL
 
 
-Here is the Ansible Playbook example to setup LAMP Stack
+#Here is the Ansible Playbook example to setup LAMP Stack
 
 ---
 - name: Setting up LAMP Website
