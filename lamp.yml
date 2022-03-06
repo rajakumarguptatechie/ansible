@@ -21,6 +21,7 @@
 - name: Setting up LAMP Website
   user: ec2-user
   hosts: localhost
+  connection: local  
   become: yes
   tasks:
     - name: latest version of all required packages installed
