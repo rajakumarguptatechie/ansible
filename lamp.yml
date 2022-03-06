@@ -27,7 +27,7 @@
     - name: latest version of all required packages installed
       yum:
         name:
-          - epel-release
+          #- epel-release
           - firewalld
           - httpd
           - mariadb-server
